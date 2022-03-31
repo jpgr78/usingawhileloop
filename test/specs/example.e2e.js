@@ -1,15 +1,13 @@
 const LoginPage = require('../pageobjects/login.page');
 const SecurePage = require('../pageobjects/secure.page');
+const DynamicLoadedPage=require('../pageobjects/dynamically.loaded.page')
 
 describe('My Login application', () => {
-    it('should login with valid credentials', async () => {
-        await LoginPage.open();
+   
+        DynamicLoadedPage.notexist({path:'dynamic_loading/2',element:'#finish h4',text:"the h4 is currently not visible" })
 
-        await LoginPage.login('tomsmith', 'SuperSecretPassword!');
-        await expect(SecurePage.flashAlert).toBeExisting();
-        await expect(SecurePage.flashAlert).toHaveTextContaining(
-            'You logged into a secure area!');
-    });
+       
+   
 });
 
 
